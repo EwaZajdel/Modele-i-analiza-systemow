@@ -19,6 +19,7 @@ print('-'*20)
 
 print("1.3")
 
+
 print("Insert 5 numbers to an array:")
 tab = [0, 0, 0, 0, 0]
 for i in range(0, 5):
@@ -26,21 +27,21 @@ for i in range(0, 5):
 
 print("Inserted array: ", tab)
 
-def find_lowest_value(tab):
+def lowest(tab):
     min = tab[0]
     amount = 0
     for i in range(0, len(tab)):
         if (tab[i] < min):
             min = tab[i]
-    print("The lowest value is ", min, "state on position (counting from 0): ")
+    print("The lowest value is: ", min)
+    print("It is in position: ")
     for i in range(0, len(tab)):
         if (tab[i] == min):
             amount += 1
-            print(i)
+            print(i+1)
 
-   # print("\nThere are ", amount, " the same min numbers")
 
-find_lowest_value(tab)
+lowest(tab) 
 
 
 print('-'*20)
