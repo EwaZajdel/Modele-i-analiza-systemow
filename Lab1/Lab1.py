@@ -19,16 +19,29 @@ print('-'*20)
 
 print("1.3")
 
-def minimum(a):
+print("Insert 5 numbers to an array:")
+tab = [0, 0, 0, 0, 0]
+for i in range(0, 5):
+    tab[i] = int(input())
 
-    minpos = a.index(min(a))
-    mindigit = min(a)
+print("Inserted array: ", tab)
 
-    print("The maximum is at position", minpos + 1)
-    print("Minimum digit", mindigit)
+def find_lowest_value(tab):
+    min = tab[0]
+    amount = 0
+    for i in range(0, len(tab)):
+        if (tab[i] < min):
+            min = tab[i]
+    print("The lowest value is ", min, "state on position (counting from 0): ")
+    for i in range(0, len(tab)):
+        if (tab[i] == min):
+            amount += 1
+            print(i)
 
-a = [3, 4, 1, -5, 4, 5, 10, -10]
-minimum(a)
+   # print("\nThere are ", amount, " the same min numbers")
+
+find_lowest_value(tab)
+
 
 print('-'*20)
 
