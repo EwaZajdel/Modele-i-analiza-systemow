@@ -1,0 +1,67 @@
+import math
+
+figures = ["circle", "rectangle", "triangle", "rhombus"]
+
+fig1 = (input("Figure: ")).lower()
+
+while fig1 not in figures:
+    print("Choose other figure: circle, rectangle, triangle or rhombus")
+    fig1 = (input("Figure:"))
+else:
+    if fig1 == 'circle':
+        print("Give r")
+        r = float(input())
+        pole = math.pi * r * r
+        while r < 0:
+            print("The number is not positive, give positive number: ")
+            r = float(input())
+        print("The field of circle is:", pole)
+
+    if fig1 == 'rectangle':
+        print("Give a")
+        a = float(input())
+        while a < 0:
+            print("The number is not positive, give positive number: ")
+            a = float(input())
+        print("Give b")
+        b = float(input())
+        while b < 0:
+            print("The number is not positive, give positive number: ")
+            b = float(input())
+        pole = a*b
+        print("The field of rectangle is", pole)
+
+    if fig1 == 'triangle':
+        print("Give a")
+        a = float(input())
+        while a < 0:
+            print("The number is not positive, give positive number: ")
+            a = float(input())
+        print("Give h")
+        h = float(input())
+        while h < 0:
+            print("The number is not positive, give positive number: ")
+            h = float(input())
+        pole = 1/3*a*h
+        print("The field of triangle is", pole)
+
+    if fig1 == 'rhombus' or 'Rhombus':
+        print("Give d1")
+        d1 = int(input())
+        print("Give d2")
+        d2 = int(input())
+        pole = 1/2*d1*d2
+        print("The field of rhombus is", pole)
+
+
+
+
+#1 Write a function countField which calculates the field of a given figure. It takes the following input parameters:
+# - type: circle/rectangle/triangle/rhombus
+# - x & optional y.
+# For circle we get only x which stands for radius. For Rectangle x&y are the figure's sides, for triangle they are
+# accordingly the base and the height and for rhombus - diagonals (4p)
+#2 Write a function which takes sets of parameters of two figures and compares their fields. (4p)
+# The exemplary input is [[Circle, 4], [Rhombus, 2, 4]]
+# Expected output would be 'The first figure (Circle) has larger field'
+#3 Test your solutions
