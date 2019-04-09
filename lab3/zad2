@@ -1,128 +1,51 @@
-import math
-import sys
-from cs50 import get_float
+from numpy import*
 
-#2 Write a function which takes sets of parameters of two figures and compares their fields. (4p)
-# The exemplary input is [[Circle, 4], [Rhombus, 2, 4]]
-# Expected output would be 'The first figure (Circle) has larger field'
-#3 Test your solutions
+def countField(type, X, Y=1):
 
-def compareField():
+    if type.lower() == 'circle':
+        if X >= 0:
+            return pi * X ** 2
+        else:
+            print('Please enter the correct radius of the circle (radius >= 0)')
 
-    figures = ["circle", "rectangle", "triangle", "rhombus"]
+    elif type.lower() == 'rectangle':
+        if X >= 0 and Y >= 0:
+            return X * Y
+        else:
+            print('Please enter the correct sides of the rectangle (side >= 0)')
 
-    fig1 = (input("Figure (circle, rectangle, triangle or rhombus): ")).lower()
+    elif type.lower() == 'triangle':
+        if X >= 0 and Y >= 0:
+            return 0.5 * X * Y
+        else:
+            print('Please enter the correct sides of the triangle (side >= 0)')
 
-    while fig1 not in figures:
-        print("Choose other figure: circle, rectangle, triangle or rhombus")
-        fig1 = (input("Figure:"))
-
-
-    if fig1 == 'circle':
-        r = get_float("Give r ")
-        while r < 0:
-            print("The number should be graater then 0")
-            r = get_float("Give r ")
-        pole = math.pi * r * r
-        print("The field of circle is:", pole)
-
-
-    elif fig1 == 'rectangle':
-        a = get_float("Give a ")
-        while a < 0:
-            print("The number should be graater then 0")
-            a = get_float("Give a ")
-        b = get_float("Give b ")
-        while b < 0:
-            print("The number should be graater then 0")
-            b = get_float("Give b ")
-        pole = a*b
-        print("The field of rectangle is:", pole)
-
-    elif fig1 == 'triangle':
-        a = get_float("Give a ")
-        while a < 0:
-            print("The number should be graater then 0")
-            a = get_float("Give a ")
-        b = get_float("Give h ")
-        while h < 0:
-            print("The number should be graater then 0")
-            h = get_float("Give h ")
-        pole = 0.5*a*h
-        print("The field of triangle is:", pole)
-
-    elif fig1 == 'rhombus':
-        d1 = get_float("Give d1 ")
-        while d1 < 0:
-            print("The number should be graater then 0")
-            d1 = get_float("Give d1 ")
-        d2 = get_float("Give d2 ")
-        while d2 < 0:
-            print("The number should be graater then 0")
-            d2 = get_float("Give d2 ")
-        pole = 0.5*d1*d2
-        print("The field of rectangle is:", pole)
-
-
-    fig2 = (input("Figure (circle, rectangle, triangle or rhombus): ")).lower()
-
-    while fig2 not in figures:
-        print("Choose other figure: circle, rectangle, triangle or rhombus")
-        fig2 = (input("Figure:"))
-
-
-    if fig2 == 'circle':
-        r = get_float("Give r ")
-        while r < 0:
-            print("The number should be graater then 0")
-            r = get_float("Give r ")
-        pole2 = math.pi * r * r
-        print("The field of circle is:", pole2)
-
-
-    elif fig2 == 'rectangle':
-        a = get_float("Give a ")
-        while a < 0:
-            print("The number should be graater then 0")
-            a = get_float("Give a ")
-        b = get_float("Give b ")
-        while b < 0:
-            print("The number should be graater then 0")
-            b = get_float("Give b ")
-        pole2 = a*b
-        print("The field of rectangle is:", pole2)
-
-    elif fig2 == 'triangle':
-        a = get_float("Give a ")
-        while a < 0:
-            print("The number should be graater then 0")
-            a = get_float("Give a ")
-        b = get_float("Give h ")
-        while h < 0:
-            print("The number should be graater then 0")
-            h = get_float("Give h ")
-        pole2 = 0.5*a*h
-        print("The field of triangle is:", pole2)
-
-    elif fig2 == 'rhombus':
-        d1 = get_float("Give d1 ")
-        while d1 < 0:
-            print("The number should be graater then 0")
-            d1 = get_float("Give d1 ")
-        d2 = get_float("Give d2 ")
-        while d2 < 0:
-            print("The number should be graater then 0")
-            d2 = get_float("Give d2 ")
-        pole2 = 0.5*d1*d2
-        print("The field of rectangle is:", pole2)
-
-    if pole < 0 or pole2 < 0:
-        print('The input is invalid.')
-    elif pole > pole2:
-        print('The first figure (', fig1, ') has a larger field.')
-    elif pole < pole2:
-        print('The second figure (', fig2, ') has a larger field.')
+    elif type.lower() == 'rhombus':
+        if X >= 0 and Y >= 0:
+            return 0.5 * X * Y
+        else:
+            print('Please enter the correct diagonals of the rhombus (side >= 0)')
     else:
-        print('The fields of are equal.')
+        print('Please enter the correct type of geometric figure (e.g. circle, rectangle, triangle, rhombus): ')
 
-compareField()
+
+def CompareField(fig1, fig2):
+
+    if len(fig1) == 2:
+        field1=countField(fig1[0],fig1[1])
+    else:
+        field1 = countField(fig1[0], fig1[1], fig1[2])
+
+
+    field2 = countField(fig2[0],fig2[1],fig2[2])
+
+    if field1 == 0 or field2 == 0:
+        print('The input is invalid.')
+    elif field1 > field2:
+        print('The first figure (', fig1[0], ') has a larger field.')
+    elif field1 < field2:
+        print('The second figure (', fig2[0], ') has a larger field.')
+    else:
+        print('The fields are equal.')
+
+CompareField(['circle', 3,5], ['rectangle', 2,4])
